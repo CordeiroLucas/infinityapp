@@ -8,3 +8,42 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Arquivos e diretórios gerados pelo Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-selfcheck.json
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.cache
+.tox/
+.coverage
+htmlcov/
+.nox/
+
+# Arquivos e diretórios específicos do Django
+*.log
+*.pot
+local_settings.py
+db.sqlite3
+/media/
+/static/
+
+# Arquivos de ambiente local e senhas (informações sensíveis)
+.env
+.flaskenv
+.vscode/
+
+# Arquivos e diretórios do macOS
+.DS_Store
+
+# Arquivos e diretórios do Windows
+Thumbs.db

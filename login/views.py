@@ -22,4 +22,4 @@ def login_view(request):
             messages.error(request, 'Credenciais inválidas.')
             return redirect('login')
         
-    return render(request, 'login.html')
+    return render(request, 'login/login.html')
