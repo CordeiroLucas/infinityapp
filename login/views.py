@@ -17,7 +17,7 @@ def login_view(request):
         if user is not None:
             auth_login(request, user)
             messages.success(request, f'Bem-vindo, {username}')
-            return HttpResponse("Logado com sucesso")
+            return redirect("dashboard")
         else:
             messages.error(request, 'Credenciais inválidas.')
             return redirect('login')
