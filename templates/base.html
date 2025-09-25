@@ -8,15 +8,16 @@
             try {
                 if (localStorage.getItem('tema') === 'escuro') {
                     document.documentElement.classList.add('dark-mode');
-                    document.body && document.body.classList.add('dark-mode');
                 }
             } catch (e) {}
         })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Infinity School{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -24,74 +25,28 @@
         <h1>{% block header_title %}{% endblock %}</h1>
         {% block header %}{% endblock %}
     </header>
+
     <main>
         {% block content %}{% endblock %}
-        {% block modals %}{% endblock%}
+        {% block modals %}{% endblock %}
     </main>
+
     <footer>
         <p>&copy; 2025 Infinity School. Todos os direitos reservados.</p>
     </footer>
     
-    <!-- Botão de tema customizado -->
+    <!-- Botão de alternar tema -->
     <button class="theme__icon" id="theme-toggle" title="Alternar tema">
         <span></span>
-        <span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
+        <span><span></span><span></span><span></span><span></span></span>
         <span></span>
     </button>
 
-    <script>
-        // Lógica para alternar tema com o novo botão
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            
-            // Verifica se o tema escuro está salvo no localStorage
-            const isDarkMode = localStorage.getItem('tema') === 'escuro';
-            if (isDarkMode) {
-                document.body.classList.add('dark-mode');
-            }
+    <!-- Scripts globais -->
+    <script type="module" src="{% static 'js/utils/notifications.js' %}"></script>
+    <script type="module" src="{% static 'js/utils/csrf.js' %}"></script>
+    <script type="module" src="{% static 'js/utils/modal.js' %}"></script>
 
-            // Event listener para alternar tema
-            themeToggle.addEventListener('click', () => {
-                const newDarkMode = document.documentElement.classList.toggle('dark-mode');
-                document.body.classList.toggle('dark-mode');
-                // Salva no localStorage
-                localStorage.setItem('tema', newDarkMode ? 'escuro' : 'claro');
-                
-                // Adiciona feedback visual no clique
-                themeToggle.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    themeToggle.style.transform = 'scale(1)';
-                }, 150);
-            });
-
-            // Adiciona efeito de hover suave
-            themeToggle.addEventListener('mouseenter', () => {
-                if (!themeToggle.style.transform.includes('scale(0.9)')) {
-                    themeToggle.style.transform = 'scale(1.05)';
-                }
-            });
-
-            themeToggle.addEventListener('mouseleave', () => {
-                if (!themeToggle.style.transform.includes('scale(0.9)')) {
-                    themeToggle.style.transform = 'scale(1)';
-                }
-            });
-
-            // Adiciona suporte a teclado para acessibilidade
-            themeToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    themeToggle.click();
-                }
-            });
-        });
-    </script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
-
