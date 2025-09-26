@@ -1,52 +1,52 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script>
-        (function() {
-            try {
-                if (localStorage.getItem('tema') === 'escuro') {
-                    document.documentElement.classList.add('dark-mode');
-                }
-            } catch (e) {}
-        })();
+      (function () {
+        try {
+          if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark-mode");
+          }
+        } catch (e) {}
+      })();
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Infinity School{% endblock %}</title>
 
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Variáveis + sobrescrita de tema -->
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
 
     {% block head %}{% endblock %}
-</head>
-<body>
-    <header>
-        <h1>{% block header_title %}{% endblock %}</h1>
-        {% block header %}{% endblock %}
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header class="bg-secondary text-white p-3 shadow">
+      <div class="container">
+        <h1 class="h3 m-0">{% block header_title %}{% endblock %}</h1>
+      </div>
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
-        {% block modals %}{% endblock %}
+    <main class="flex-fill">
+      <div class="container py-4">{% block content %}{% endblock %}</div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Infinity School. Todos os direitos reservados.</p>
+    <footer class="bg-secondary text-center text-white p-3 mt-auto">
+      <p class="m-0">
+        &copy; 2025 Infinity School. Todos os direitos reservados.
+      </p>
     </footer>
-    
-    <!-- Botão de alternar tema -->
-    <button class="theme__icon" id="theme-toggle" title="Alternar tema">
-        <span></span>
-        <span><span></span><span></span><span></span><span></span></span>
-        <span></span>
-    </button>
 
-    <!-- Scripts globais -->
-    <script type="module" src="{% static 'js/utils/notifications.js' %}"></script>
-    <script type="module" src="{% static 'js/utils/csrf.js' %}"></script>
-    <script type="module" src="{% static 'js/utils/modal.js' %}"></script>
+    <!-- Bootstrap Bundle (com Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     {% block scripts %}{% endblock %}
-</body>
+  </body>
 </html>

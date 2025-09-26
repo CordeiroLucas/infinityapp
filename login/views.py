@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.utils import OperationalError
 
 from django.contrib import messages
 
@@ -15,11 +16,15 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            auth_login(request, user)
-            messages.success(request, f'Bem-vindo, {username}')
-            return redirect("dashboard")
+            try:
+                auth_login(request, user)
+                messages.success(request, f'Bem-vindo, {username}')
+                return redirect("dashboard")
+            except OperationalError:
+                messages.error(request, 'Servidor Inativo.')
+                return redirect('login')
         else:
             messages.error(request, 'Credenciais inválidas.')
             return redirect('login')
         
-    return render(request, 'login/login.html')
+    return redirect('login')

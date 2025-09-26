@@ -23,8 +23,8 @@
   --warning: #ffc107;
   --gold: #ffd700;
 
-  --shadow: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
   --transition: all 0.3s ease;
 }
 
@@ -49,6 +49,6 @@ html.dark-mode {
   --warning: #e0a800;
   --gold: #ffd700;
 
-  --shadow: 0 2px 4px rgba(0,0,0,0.3);
-  --shadow-hover: 0 4px 8px rgba(0,0,0,0.4);
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
