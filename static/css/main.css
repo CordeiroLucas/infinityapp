@@ -8,14 +8,22 @@
 @import url("layout/header.css");
 @import url("layout/footer.css");
 
-/* Components */
-@import url("components/buttons.css");
-@import url("components/cards.css");
-@import url("components/forms.css");
-@import url("components/modal.css");
-@import url("components/note_list.css");
-@import url("components/planilhas.css");
-@import url("components/tasks.css");
-@import url("components/calendar.css");
-@import url("components/profile.css");
-@import url("components/theme-toggle.css");
+:root {
+  --bs-body-bg: var(--bg-primary);
+  --bs-body-color: var(--text-primary);
+
+  --bs-primary: var(--accent-color);
+  --bs-secondary: var(--bg-secondary);
+  --bs-success: var(--success);
+  --bs-danger: var(--danger);
+  --bs-warning: var(--warning);
+  --bs-info: #17a2b8;
+
+  --bs-border-radius: var(--border-radius);
+}
+
+html.dark-mode {
+  --bs-body-bg: var(--bg-primary);
+  --bs-body-color: var(--text-primary);
+  --bs-primary: var(--accent-color);
+}
