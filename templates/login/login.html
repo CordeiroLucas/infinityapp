@@ -7,6 +7,10 @@
   <div class="card shadow p-4" style="max-width: 400px; width: 100%">
     <h2 class="mb-4 text-primary text-center">Entrar no Sistema</h2>
 
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endfor %} {% endif %}
+
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
 
@@ -34,11 +38,6 @@
 
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
-
-    {% if mensages %} {% for message in messages %}
-    <div class="alert alert-{message.tag} mt-3">{ message }</div>
-    {% endfor %} {% endif %}
-
     <div class="text-center mt-3">
       <a href="#" class="text-secondary">Não tem conta? Registre-se</a>
     </div>
