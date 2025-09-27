@@ -18,12 +18,14 @@
     {% block head %}{% endblock %}
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <header class="bg-secondary text-white p-3 shadow">
-      <div class="container">
-        <h1 class="h3 m-0">{% block header_title %}{% endblock %}</h1>
-        <button type="button" class="btn btn-light" id="toggle-theme">
-          Light
-        </button>
+    <header class="bg-secondary p-3 shadow">
+      <div class="container justify-content-between">
+        <nav class="navbar">
+          <button type="button" class="btn btn-light" id="toggle-theme">
+            Modo Claro
+          </button>
+          {% block buttons_header %}{% endblock buttons_header %}
+        </nav>
       </div>
     </header>
 
@@ -31,7 +33,7 @@
       <div class="container py-4">{% block content %}{% endblock %}</div>
     </main>
 
-    <footer class="bg-secondary text-center text-white p-3 mt-auto">
+    <footer class="bg-secondary text-center p-3 mt-auto">
       <p class="m-0">
         &copy; 2025 Infinity School. Todos os direitos reservados.
       </p>

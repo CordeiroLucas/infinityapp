@@ -7,9 +7,11 @@
   <div class="card shadow p-4" style="max-width: 400px; width: 100%">
     <h2 class="mb-4 text-primary text-center">Entrar no Sistema</h2>
 
-    {% if messages %} {% for message in messages %}
-    <div class="alert alert-danger" role="alert">{{ message }}</div>
-    {% endfor %} {% endif %}
+    {% if notificacao %}
+    <div class="alert alert-{{ notificacao.tipo }}">
+      {{ notificacao.message }}
+    </div>
+    {% endif %}
 
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
