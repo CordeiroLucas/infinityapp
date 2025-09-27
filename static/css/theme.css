@@ -1,69 +1,71 @@
 /* Base */
-@import url("base/variables.css");
+@import url("variables.css");
 
 :root {
   --bs-body-bg: var(--bg-primary);
   --bs-body-color: var(--text-primary);
-
   --bs-primary: var(--accent-color);
   --bs-secondary: var(--bg-secondary);
   --bs-success: var(--success);
   --bs-danger: var(--danger);
   --bs-warning: var(--warning);
-  --bs-info: #17a2b8;
-
-  --bs-border-radius: var(--border-radius);
-}
-
-html.dark-mode {
-  --bs-body-bg: var(--bg-primary);
-  --bs-body-color: var(--text-primary);
-  --bs-primary: var(--accent-color);
 }
 
 /* Botões */
 .btn-accent {
-  background-color: var(--accent-color);
-  color: #fff;
+  background-color: var(--accent-color) !important;
+  color: #fff !important;
 }
 .btn-accent:hover {
-  background-color: var(--accent-color-hover);
+  background-color: var(--accent-color-hover) !important;
 }
 
-.btn-secondary-theme {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  border: var(--accent-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary) !important;
+  border: var(--accent-color) !important;
+  color: var(--text-primary) !important;
 }
 
 /* Texto */
 .text-accent {
   color: var(--accent-color) !important;
 }
-.text-secondary-theme {
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-secondary {
   color: var(--text-secondary) !important;
 }
 
 /* Fundo */
-.bg-primary-theme {
+.bg-primary {
   background-color: var(--bg-primary) !important;
 }
-.bg-secondary-theme {
+.bg-secondary {
   background-color: var(--bg-secondary) !important;
 }
-.bg-card-theme {
+.bg-card {
   background-color: var(--card-bg) !important;
 }
 
 /* Alertas */
-.alert-success-theme {
-  background-color: var(--success);
+.alert-success {
+  background-color: var(--success) !important;
   color: #fff;
 }
-.alert-danger-theme {
-  background-color: var(--danger);
+.alert-danger {
+  background-color: var(--danger) !important;
   color: #fff;
 }
-.alert-warning-theme {
-  background-color: var(--warning);
+.alert-warning {
+  background-color: var(--warning) !important;
   color: #000;
 }
