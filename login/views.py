@@ -21,9 +21,17 @@ def login_view(request):
                 return redirect("dashboard")
             else:
                 messages.error(request, 'Credenciais inválidas.')
-                return redirect('login')
+                saida = {'notificacao':{'tipo':'danger', 'message':'Credenciais Inválidas'}}
+                return render(request, 'login/login.html', saida)
         except OperationalError:
                 messages.error(request, 'Servidor Inativo.')
-                return redirect('login')
+                saida = {'notificacao':{'tipo':'danger', 'message':'Server Inativo'}}
+                return render(request, 'login/login.html', saida)
         
     return render(request, 'login/login.html')
+
+@login_required
+def logout_view(request):
+    logout(request)
+    saida = {'notificacao':{'tipo':'success', 'message':'Desconectado com sucesso'}}
+    return render(request, 'login/login.html', saida)
