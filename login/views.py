@@ -13,18 +13,17 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            try:
+        try:
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
                 auth_login(request, user)
                 messages.success(request, f'Bem-vindo, {username}')
                 return redirect("dashboard")
-            except OperationalError:
+            else:
+                messages.error(request, 'Credenciais inválidas.')
+                return redirect('login')
+        except OperationalError:
                 messages.error(request, 'Servidor Inativo.')
                 return redirect('login')
-        else:
-            messages.error(request, 'Credenciais inválidas.')
-            return redirect('login')
         
     return render(request, 'login/login.html')
