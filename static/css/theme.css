@@ -11,6 +11,10 @@
   --bs-warning: var(--warning);
 }
 
+h1 {
+  color: var(--bs-body-color);
+}
+
 /* Botões */
 .btn-accent {
   background-color: var(--accent-color) !important;
