@@ -8,4 +8,4 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def dash_view(request):
-    render(request, 'base.html')
+    return render(request, 'dash/dashboard.html')
