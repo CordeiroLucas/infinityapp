@@ -1,11 +1,11 @@
-{% extends 'base.html' %} {% block title %}Login - Infinity School{% endblock %}
-{% block header_title %}Login{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Registrar-se - Infinity School{% endblock %}
+{% block header_title %}Registrar-se{% endblock %} {% block content %}
 <div
   class="d-flex justify-content-center align-items-center"
   style="min-height: 70vh"
 >
   <div class="card shadow p-4" style="max-width: 400px; width: 100%">
-    <h2 class="mb-4 text-primary text-center">Entrar no Sistema</h2>
+    <h2 class="mb-4 text-primary text-center">Registro no Sistema</h2>
 
     {% if popup %}
     <div class="alert alert-{{ popup.type }}">
@@ -13,7 +13,7 @@
     </div>
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'register' %}">
       {% csrf_token %}
 
       <div class="mb-3">
@@ -38,11 +38,19 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+      <div class="mb-3">
+        <label for="password_check" class="form-label">Confirmar Senha</label>
+        <input
+          type="password"
+          id="password_check"
+          name="password_check"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Registrar-se</button>
     </form>
-    <div class="text-center mt-3">
-      <a href="{% url "register" %}" class="text-secondary">Não tem conta? Registre-se</a>
-    </div>
   </div>
 </div>
 {% endblock %}
