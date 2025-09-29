@@ -5,7 +5,7 @@
   style="min-height: 70vh"
 >
   <div class="card shadow p-4" style="max-width: 400px; width: 100%">
-    <h2 class="mb-4 text-primary text-center">Registro no Sistema</h2>
+    <h2 class="mb-4 text-primary text-center">Registrar-se no Sistema</h2>
 
     {% if popup %}
     <div class="alert alert-{{ popup.type }}">
@@ -17,7 +17,7 @@
       {% csrf_token %}
 
       <div class="mb-3">
-        <label for="username" class="form-label">Usuário</label>
+        <label for="username" class="form-label">Usuário*</label>
         <input
           type="text"
           id="username"
@@ -28,7 +28,27 @@
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Senha</label>
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="email_check" class="form-label">Confirme o Email</label>
+        <input
+          type="text"
+          id="email_check"
+          name="email_check"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha*</label>
         <input
           type="password"
           id="password"
@@ -39,7 +59,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="password_check" class="form-label">Confirmar Senha</label>
+        <label for="password_check" class="form-label">Confirmar Senha*</label>
         <input
           type="password"
           id="password_check"
