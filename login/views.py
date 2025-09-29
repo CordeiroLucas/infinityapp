@@ -4,27 +4,24 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.utils import OperationalError
 
-from django.contrib import messages
+from django.contrib.auth.models import User
+from .models import Usuario
 
 # Create your views here.
 
-
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         try:
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                messages.success(request, f'Bem-vindo, {username}')
                 return redirect("dashboard")
             else:
-                messages.error(request, 'Credenciais inválidas.')
                 out = {'popup':{'type':'danger', 'message':'Credenciais Inválidas'}}
                 return render(request, 'login/login.html', out)
         except OperationalError:
-                messages.error(request, 'Servidor Inativo.')
                 out = {'popup':{'type':'danger', 'message':'Server Inativo'}}
                 return render(request, 'login/login.html', out)
         
@@ -32,17 +29,29 @@ def login_view(request):
 
 def register_view(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        pass_confirmation = request.POST['password_check']
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        email_check = request.POST.get('email_check')
+        password = request.POST.get('password')
+        pass_check = request.POST.get('password_check')
         
-        if password != pass_confirmation:
+        if password != pass_check:
             out = {'popup':{'type':'danger', 'message':'Insira senhas iguais!'}}
             return render(request, 'login/register.html', out)
         
-        out = {'popup':{'type':'success', 'message':'Registrado com sucesso'}}
-        return render(request, 'login/register.html', out)
+        if email != email_check:
+            out = {'popup':{'type':'danger', 'message':'Insira senhas iguais!'}}
+            return render(request, 'login/register.html', out)
         
+        user = User.objects.create_user(username=username, password=password, email=email)
+        
+        if user is not None:
+            user.save()
+            auth_login(request, user)
+            return redirect('dashboard')
+        else:
+            out = {'popup':{'type':'danger', 'message':'Credenciais Inválidas'}}
+            return render(request, 'login/login.html', out)
         
     return render(request, 'login/register.html')
 
